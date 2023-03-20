@@ -1,0 +1,31 @@
+//colors
+
+$green: #41522e;
+$orange: #be8022;
+$font-color: #424242;
+
+// fonts
+
+@mixin robotoLight($s) {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: $s;
+  line-height: 1.2;
+  color: $font-color;
+}
+
+@mixin robotoRegular($s) {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: $s;
+  line-height: 1.2;
+  color: $font-color;
+}
+
+@mixin robotoMedium($s) {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: $s;
+  line-height: 1.2;
+  color: $font-color;
+}
