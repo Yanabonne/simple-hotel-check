@@ -40,3 +40,24 @@
   width: 8.7px;
   height: 17.3px;
 }
+
+.list__slider {
+  width: 100%;
+  overflow: hidden;
+  margin: 28px 0;
+}
+
+.list__slide-image {
+  width: 164px;
+  height: 149px;
+}
+
+.list__fav {
+  @include robotoLight(17px);
+  margin: 0 0 12px;
+  align-self: flex-start;
+  span {
+    @include robotoMedium(17px);
+    color: $green;
+  }
+}
