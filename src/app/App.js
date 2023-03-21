@@ -6,8 +6,7 @@ import { getHotels, hotelsCount } from "../store/HotelsSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = React.useState(true);
-  const isLoggedIn = true;
+  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
   const hotels = useSelector(hotelsCount);
   const dispatch = useDispatch();
 
