@@ -1,0 +1,11 @@
+.hotels {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.hotels__container {
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+}

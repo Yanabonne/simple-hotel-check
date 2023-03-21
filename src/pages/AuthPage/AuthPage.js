@@ -14,7 +14,7 @@ function AuthPage() {
           <input
             type="password"
             className="auth__input"
-            name="email"
+            name="password"
             required
           />
           <span className="auth__error"></span>

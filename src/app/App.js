@@ -1,15 +1,16 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import AuthPage from "../pages/AuthPage/AuthPage";
+import HotelsPage from "../pages/HotelsPage/HotelsPage";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
 
   return (
     <div className="app">
       <Routes>
         <Route path="auth" element={<AuthPage />} />
-        <Route path="hotels" element />
+        <Route path="hotels" element={<HotelsPage />} />
         <Route
           path="*"
           element={
