@@ -4,13 +4,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { ImagesContext } from "../../contexts/Images-swiper";
 import { selectBooking } from "../../store/CurrentBookingSlice";
-import { useSelector } from "react-redux";
-
 import HotelCard from "../../shared/HotelCard/HotelCard";
+import { getHotels, selectHotels } from "../store/HotelsSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 function HotelsList() {
-  const images = React.useContext(ImagesContext);
   const booking = useSelector(selectBooking);
+  const hotels = useSelector(selectHotels);
+  //   const dispatch = useDispatch();
+
+  //   React.useEffect(() => {
+  //     console.log(hotels);
+  //   }, [hotels]);
+
+  //   React.useEffect(() => {
+  //     dispatch(getHotels("Москва"));
+  //   }, []);
+
+  const images = React.useContext(ImagesContext);
 
   return (
     <section className="list">

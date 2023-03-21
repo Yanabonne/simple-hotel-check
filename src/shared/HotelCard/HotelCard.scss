@@ -1,7 +1,11 @@
 .card {
   width: 100%;
   display: flex;
+  align-items: center;
   gap: 24px;
+  padding: 16px 16px 16px 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(135, 135, 135, 0.2);
 }
 
 .card__picture {
@@ -9,6 +13,55 @@
   height: 64px;
 }
 
+.card__info {
+  width: 100%;
+}
+
 .card__container {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__name {
+  @include robotoLight(17px);
+  margin: 0;
+}
+
+.card__like {
+  background-color: white;
+  background-image: url("../../images/heart-disabled.svg");
+  background-size: contain;
+  border: none;
+  outline: none;
+  width: 21px;
+  height: 18px;
+}
+
+.card__date {
+  @include robotoRegular(14px);
+  margin: 0 0 5px;
+  color: #878787;
+}
+
+.card__stars {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.card__star {
+  width: 17px;
+  height: 17px;
+}
+
+.card__price {
+  @include robotoLight(11px);
+  color: #878787;
+  margin: 0;
+}
+
+.card__span-price {
+  @include robotoRegular(17px);
+  margin-left: 8px;
 }
