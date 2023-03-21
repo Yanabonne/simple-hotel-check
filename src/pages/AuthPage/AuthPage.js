@@ -1,9 +1,9 @@
 import React from "react";
-import "./AuthPage.scss";
 
 function AuthPage() {
   return (
     <div className="auth">
+      <div className="auth__blur"></div>
       <div className="auth__frame">
         <h1 className="auth__title">Simple Hotel Check</h1>
         <form className="auth__form">
@@ -18,6 +18,9 @@ function AuthPage() {
             required
           />
           <span className="auth__error"></span>
+          <button className="auth__button" type="submit">
+            Войти
+          </button>
         </form>
       </div>
     </div>

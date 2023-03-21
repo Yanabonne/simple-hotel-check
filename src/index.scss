@@ -1,1 +1,7 @@
-@import "vendor/fonts.scss";
+@import "./vendor/normalize.css";
+@import "./vendor/fonts.scss";
+
+@import "./app/globalVariables.scss";
+@import "./app/App.scss";
+
+@import "./pages/AuthPage/AuthPage.scss";
