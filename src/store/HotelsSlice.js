@@ -31,6 +31,6 @@ export const hotelsSlice = createSlice({
   },
 });
 
-export const hotelsCount = (state) => state;
+export const selectHotels = (state) => state.hotels.hotels;
 
 export default hotelsSlice.reducer;
