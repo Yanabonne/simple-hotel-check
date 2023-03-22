@@ -4,10 +4,10 @@ import HotelsSearch from "../../widgets/HotelSearch/HotelsSearch";
 import HotelsList from "../../widgets/HotelsList/HotelsList";
 import FavHotels from "../../widgets/FavHotels/FavHotels";
 
-function HotelsPage() {
+function HotelsPage({ navigateToAuth }) {
   return (
     <>
-      <Header />
+      <Header navigateToAuth={navigateToAuth} />
       <div className="hotels">
         <div className="hotels__container">
           <HotelsSearch />

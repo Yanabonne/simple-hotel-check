@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import AuthPage from "../pages/AuthPage/AuthPage";
 import HotelsPage from "../pages/HotelsPage/HotelsPage";
 import { getHotels, selectHotels } from "../store/HotelsSlice";
@@ -7,10 +7,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectBooking } from "../store/CurrentBookingSlice";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const booking = useSelector(selectBooking);
   const hotels = useSelector(selectHotels);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  function navigateToHotels() {
+    setIsLoggedIn(true);
+    navigate("hotels");
+  }
+
+  function navigateToAuth() {
+    setIsLoggedIn(false);
+    navigate("auth");
+  }
 
   React.useEffect(() => {
     dispatch(
@@ -21,8 +32,26 @@ function App() {
   return (
     <div className="app">
       <Routes>
-        <Route path="auth" element={<AuthPage />} />
-        <Route path="hotels" element={<HotelsPage />} />
+        <Route
+          path="auth"
+          element={
+            isLoggedIn ? (
+              <Navigate to="hotels" />
+            ) : (
+              <AuthPage navigateToHotels={navigateToHotels} />
+            )
+          }
+        />
+        <Route
+          path="hotels"
+          element={
+            isLoggedIn ? (
+              <HotelsPage navigateToAuth={navigateToAuth} />
+            ) : (
+              <Navigate to="auth" />
+            )
+          }
+        />
         <Route
           path="*"
           element={
