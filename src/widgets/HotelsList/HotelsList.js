@@ -24,7 +24,7 @@ function HotelsList() {
         <p className="list__date">{booking.date}</p>
       </div>
       <div className="list__slider">
-        <Swiper spaceBetween={12} slidesPerView={3}>
+        <Swiper slidesPerView={3}>
           <SwiperSlide>
             {<img className="list__slide-image" src={images[0]} alt="Дом" />}
           </SwiperSlide>
@@ -50,7 +50,7 @@ function HotelsList() {
       </p>
       <div className="list__hotels">
         {hotels.map((hotel) => (
-          <HotelCard cardInfo={hotel} key={hotel.hotelId} />
+          <HotelCard cardInfo={hotel} showPicture={true} key={hotel.hotelId} />
         ))}
       </div>
     </section>

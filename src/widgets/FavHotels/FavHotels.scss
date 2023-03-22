@@ -1,0 +1,18 @@
+.fav {
+  padding: 32px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 32px;
+  height: 100%;
+}
+
+.fav__title {
+  @include robotoMedium(24px);
+  margin: 0;
+}

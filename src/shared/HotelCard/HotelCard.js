@@ -5,12 +5,16 @@ import { useSelector } from "react-redux";
 import starGold from "../../images/star-gold.svg";
 import starGrey from "../../images/star-grey.svg";
 
-function HotelCard({ cardInfo }) {
+function HotelCard({ cardInfo, showPicture }) {
   const booking = useSelector(selectBooking);
 
   return (
     <article className="card">
-      <img className="card__picture" alt="Домик" src={house}></img>
+      <img
+        className={showPicture ? "card__picture" : "card__disabled"}
+        alt="Домик"
+        src={house}
+      ></img>
       <div className="card__info">
         <div className="card__container">
           <p className="card__name">{cardInfo.hotelName}</p>
@@ -21,27 +25,27 @@ function HotelCard({ cardInfo }) {
           <div className="card__stars">
             <img
               src={cardInfo.stars > 0 ? starGold : starGrey}
-              alt="Золотая звезда"
+              alt="Звезда"
               className="card__star"
             />
             <img
               src={cardInfo.stars > 1 ? starGold : starGrey}
-              alt="Золотая звезда"
+              alt="Звезда"
               className="card__star"
             />
             <img
               src={cardInfo.stars > 2 ? starGold : starGrey}
-              alt="Золотая звезда"
+              alt="Звезда"
               className="card__star"
             />
             <img
               src={cardInfo.stars > 3 ? starGold : starGrey}
-              alt="Золотая звезда"
+              alt="Звезда"
               className="card__star"
             />
             <img
               src={cardInfo.stars > 4 ? starGold : starGrey}
-              alt="Золотая звезда"
+              alt="Звезда"
               className="card__star"
             />
           </div>
