@@ -4,6 +4,7 @@ import {
   updateBookingData,
 } from "../../store/CurrentBookingSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { getHotels } from "../../store/HotelsSlice";
 
 function HotelsSearch() {
   const cityRef = React.useRef();
@@ -23,7 +24,14 @@ function HotelsSearch() {
         days: daysRef.current.value,
       })
     );
-    console.log(booking);
+
+    dispatch(
+      getHotels({
+        city: cityRef.current.value,
+        date: dateRef.current.value,
+        days: daysRef.current.value,
+      })
+    );
   }
 
   React.useEffect(() => {

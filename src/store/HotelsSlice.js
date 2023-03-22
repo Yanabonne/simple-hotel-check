@@ -8,7 +8,7 @@ const initialState = {
 
 export const getHotels = createAsyncThunk(
   "hotels/getHotels",
-  async (city, date, days) => await getHotelsInfo(city, date, days)
+  async ({ city, date, days }) => await getHotelsInfo(city, date, days)
 );
 
 export const hotelsSlice = createSlice({

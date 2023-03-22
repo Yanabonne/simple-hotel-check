@@ -5,16 +5,15 @@ import { useSelector } from "react-redux";
 import starGold from "../../images/star-gold.svg";
 import starGrey from "../../images/star-grey.svg";
 
-function HotelCard() {
+function HotelCard({ cardInfo }) {
   const booking = useSelector(selectBooking);
-  const cardInfo = { stars: 3, priceAvg: 263637 };
 
   return (
     <article className="card">
       <img className="card__picture" alt="Домик" src={house}></img>
       <div className="card__info">
         <div className="card__container">
-          <p className="card__name">Moscow Marriott Grand Hotel</p>
+          <p className="card__name">{cardInfo.hotelName}</p>
           <button className="card__like"></button>
         </div>
         <p className="card__date">{`${booking.date}    —  ${booking.days} день`}</p>
@@ -47,7 +46,10 @@ function HotelCard() {
             />
           </div>
           <p className="card__price">
-            Price:<span className="card__span-price">{cardInfo.priceAvg}</span>
+            Price:
+            <span className="card__span-price">{`${Math.round(
+              cardInfo.priceAvg * booking.days
+            )} ₽`}</span>
           </p>
         </div>
       </div>

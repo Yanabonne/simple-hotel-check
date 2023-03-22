@@ -1,27 +1,17 @@
 import React from "react";
 import arrow from "../../images/arrow.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import "swiper/scss";
 import { ImagesContext } from "../../contexts/Images-swiper";
 import { selectBooking } from "../../store/CurrentBookingSlice";
 import HotelCard from "../../shared/HotelCard/HotelCard";
-import { getHotels, selectHotels } from "../store/HotelsSlice";
+import { getHotels, selectHotels } from "../../store/HotelsSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 function HotelsList() {
   const booking = useSelector(selectBooking);
-  const hotels = useSelector(selectHotels);
-  //   const dispatch = useDispatch();
-
-  //   React.useEffect(() => {
-  //     console.log(hotels);
-  //   }, [hotels]);
-
-  //   React.useEffect(() => {
-  //     dispatch(getHotels("Москва"));
-  //   }, []);
-
   const images = React.useContext(ImagesContext);
+  const hotels = useSelector(selectHotels);
 
   return (
     <section className="list">
@@ -58,7 +48,11 @@ function HotelsList() {
       <p className="list__fav">
         Добавлено в изранное: <span>3</span> отеля.
       </p>
-      <HotelCard />
+      <div className="list__hotels">
+        {hotels.map((hotel) => (
+          <HotelCard cardInfo={hotel} key={hotel.hotelId} />
+        ))}
+      </div>
     </section>
   );
 }
