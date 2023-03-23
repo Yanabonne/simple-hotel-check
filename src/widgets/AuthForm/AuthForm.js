@@ -66,7 +66,7 @@ function AuthForm({ navigateToHotels }) {
   }, [passwordInput]);
 
   return (
-    <form className="form" onSubmit={onSubmitForm} novalidate>
+    <form className="form" onSubmit={onSubmitForm} noValidate>
       <h2 className={isEmailValid ? "form__title" : "form__title form__red"}>
         Логин
       </h2>

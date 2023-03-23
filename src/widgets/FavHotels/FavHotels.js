@@ -1,22 +1,27 @@
 import React from "react";
-import {
-  selectBooking,
-  updateBookingData,
-} from "../../store/CurrentBookingSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { selectHotels } from "../../store/HotelsSlice";
+import HotelCard from "../../shared/HotelCard/HotelCard";
+import { useSelector } from "react-redux";
 
 function FavHotels() {
-  const booking = useSelector(selectBooking);
-  const dispatch = useDispatch();
+  const hotels = useSelector(selectHotels);
 
   return (
     <section className="fav">
       <h2 className="fav__title">Избранное</h2>
-      {/* <div className="list__hotels">
-        {hotels.map((hotel) => (
-          <HotelCard cardInfo={hotel} showPicture={true} key={hotel.hotelId} />
-        ))}
-      </div> */}
+      <div className="list__hotels">
+        {hotels.map((hotel) => {
+          if (hotel.isLiked) {
+            return (
+              <HotelCard
+                cardInfo={hotel}
+                showPicture={false}
+                key={hotel.hotelId}
+              />
+            );
+          }
+        })}
+      </div>
     </section>
   );
 }

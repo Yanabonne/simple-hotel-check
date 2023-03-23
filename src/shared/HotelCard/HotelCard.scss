@@ -44,6 +44,19 @@
   outline: none;
   width: 21px;
   height: 18px;
+  transition: background-image 0.4s ease;
+  cursor: pointer;
+  will-change: background-image;
+  &:hover {
+    background-image: url("../../images/heart-hover.svg");
+  }
+}
+
+.card__like_active {
+  background-image: url("../../images/heart-active.svg");
+  &:hover {
+    background-image: url("../../images/heart-active.svg");
+  }
 }
 
 .card__date {

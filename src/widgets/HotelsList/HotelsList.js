@@ -5,8 +5,8 @@ import "swiper/scss";
 import { ImagesContext } from "../../contexts/Images-swiper";
 import { selectBooking } from "../../store/CurrentBookingSlice";
 import HotelCard from "../../shared/HotelCard/HotelCard";
-import { getHotels, selectHotels } from "../../store/HotelsSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { selectHotels } from "../../store/HotelsSlice";
+import { useSelector } from "react-redux";
 
 function HotelsList() {
   const booking = useSelector(selectBooking);

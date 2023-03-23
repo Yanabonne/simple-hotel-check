@@ -17,6 +17,12 @@ export const getHotelsInfo = (city, date, days) => {
     )}`
   )
     .then(getResponse)
+    .then((res) => {
+      res.forEach((hotel) => {
+        hotel.isLiked = false;
+      });
+      return res;
+    })
     .catch((err) => {
       console.log(err);
     });

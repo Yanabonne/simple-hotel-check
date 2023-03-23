@@ -14,7 +14,19 @@ export const getHotels = createAsyncThunk(
 export const hotelsSlice = createSlice({
   name: "hotels",
   initialState,
-  reducers: {},
+  reducers: {
+    updateLike: (state, action) => {
+      state.hotels.forEach((hotel) => {
+        if (hotel.hotelId === action.payload.hotelId) {
+          if (hotel.isLiked === true) {
+            hotel.isLiked = false;
+          } else {
+            hotel.isLiked = true;
+          }
+        }
+      });
+    },
+  },
   extraReducers: {
     [getHotels.pending]: (state, action) => ({
       ...state,
@@ -30,6 +42,8 @@ export const hotelsSlice = createSlice({
     }),
   },
 });
+
+export const { updateLike } = hotelsSlice.actions;
 
 export const selectHotels = (state) => state.hotels.hotels;
 
