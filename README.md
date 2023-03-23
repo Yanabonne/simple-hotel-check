@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://media.giphy.com/media/fnQ9jP3cXYIj2AKjcV/giphy.gif" width="110"/>
+  <img src="https://media.giphy.com/media/fnQ9jP3cXYIj2AKjcV/giphy.gif" width="160"/>
 </div>
 
 # Проект: Simple Hotel Check

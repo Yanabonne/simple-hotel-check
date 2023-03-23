@@ -2,6 +2,7 @@
   "name": "simple-hotel-check",
   "version": "0.1.0",
   "private": true,
+  "homepage": "yanabonne.github.io/simple-hotel-check/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.5",
