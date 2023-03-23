@@ -31,7 +31,7 @@
 
 https://yanabonne.github.io/simple-hotel-check/
 
-**:bellhop_bell:Команда для запуска проекта**
+**:bellhop_bell: Команда для запуска проекта**
 
 ```
 npm run start
