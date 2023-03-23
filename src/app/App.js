@@ -14,14 +14,14 @@ function App() {
 
   function navigateToHotels() {
     setIsLoggedIn(true);
-    navigate("hotels");
-    // localStorage.setItem("isLoggedIn", true);
+    navigate("/hotels");
+    localStorage.setItem("isLoggedIn", true);
   }
 
   function navigateToAuth() {
     setIsLoggedIn(false);
-    navigate("auth");
-    // localStorage.setItem("isLoggedIn", false);
+    navigate("/auth");
+    localStorage.setItem("isLoggedIn", false);
   }
 
   React.useEffect(() => {
@@ -29,9 +29,9 @@ function App() {
       getHotels({ city: booking.city, date: booking.date, days: booking.days })
     );
     if (localStorage.getItem("isLoggedIn")) {
-      setIsLoggedIn(localStorage.getItem("isLoggedIn"));
+      setIsLoggedIn(JSON.parse(localStorage.getItem("isLoggedIn")));
     } else {
-      localStorage.getItem("isLoggedIn", false);
+      localStorage.setItem("isLoggedIn", false);
     }
   }, []);
 
@@ -39,29 +39,29 @@ function App() {
     <div className="app">
       <Routes>
         <Route
-          path="auth"
+          path="/auth"
           element={
             isLoggedIn ? (
-              <Navigate to="hotels" />
+              <Navigate to="/hotels" />
             ) : (
               <AuthPage navigateToHotels={navigateToHotels} />
             )
           }
         />
         <Route
-          path="hotels"
+          path="/hotels"
           element={
             isLoggedIn ? (
               <HotelsPage navigateToAuth={navigateToAuth} />
             ) : (
-              <Navigate to="auth" />
+              <Navigate to="/auth" />
             )
           }
         />
         <Route
           path="*"
           element={
-            isLoggedIn ? <Navigate to="hotels" /> : <Navigate to="auth" />
+            isLoggedIn ? <Navigate to="/hotels" /> : <Navigate to="/auth" />
           }
         />
       </Routes>
