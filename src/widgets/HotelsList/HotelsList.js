@@ -7,13 +7,21 @@ import { selectBooking } from "../../store/CurrentBookingSlice";
 import { selectHotels } from "../../store/HotelsSlice";
 import { useSelector } from "react-redux";
 import { convertDate } from "../../shared/utils/utils";
+import { transformHotels } from "../../shared/utils/utils";
 
 function HotelsList() {
   const booking = useSelector(selectBooking);
   const hotels = useSelector(selectHotels);
   const listRef = React.useRef();
+  const numHotels = React.useRef();
   const date = convertDate(booking.date);
-
+  const favHotelsNum = hotels.reduce((prevVal, hotel) => {
+    if (hotel.isLiked) {
+      prevVal++;
+    }
+    return prevVal;
+  }, 0);
+  const hotelsTransformed = transformHotels(String(favHotelsNum));
   const images = React.useContext(ImagesContext);
 
   return (
@@ -45,7 +53,8 @@ function HotelsList() {
         ))}
       </div>
       <p className="list__fav">
-        Добавлено в изранное: <span>3</span> отеля.
+        Добавлено в изранное: <span ref={numHotels}>{favHotelsNum}</span>{" "}
+        {hotelsTransformed}.
       </p>
       <div className="list__container">
         <div className="list__hotels" ref={listRef}>

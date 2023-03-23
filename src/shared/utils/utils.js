@@ -61,3 +61,24 @@ export function transformDays(days) {
     return "дней";
   }
 }
+
+export function transformHotels(numHotels) {
+  if (numHotels.endsWith("1")) {
+    return "отель";
+  } else if (
+    numHotels.endsWith("2") ||
+    numHotels.endsWith("3") ||
+    numHotels.endsWith("4")
+  ) {
+    return "отеля";
+  } else if (
+    numHotels.endsWith("5") ||
+    numHotels.endsWith("6") ||
+    numHotels.endsWith("7") ||
+    numHotels.endsWith("8") ||
+    numHotels.endsWith("9") ||
+    numHotels.endsWith("0")
+  ) {
+    return "отелей";
+  }
+}
