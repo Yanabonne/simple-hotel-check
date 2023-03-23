@@ -29,7 +29,7 @@
 
 **:bellhop_bell: Ссылка на проект**
 
-yanabonne.github.io/simple-hotel-check/
+https://yanabonne.github.io/simple-hotel-check/
 
 **:bellhop_bell:Команда для запуска проекта**
 
