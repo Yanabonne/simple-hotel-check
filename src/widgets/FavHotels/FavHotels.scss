@@ -17,12 +17,56 @@
   margin: 0;
 }
 
+.fav__reorder {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.fav__rating {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  outline: none;
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 4px 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.fav__rating_active {
+  border-color: $green;
+}
+
+.fav__text {
+  @include robotoRegular(14px);
+  color: #99a0a3;
+  margin: 0;
+}
+
+.fav__text_active {
+  color: $green;
+}
+
+.fav__arrows {
+  width: 18px;
+  height: 18px;
+}
+
 .fav__hotels {
   width: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
-  height: 290px;
+  height: 260px;
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
