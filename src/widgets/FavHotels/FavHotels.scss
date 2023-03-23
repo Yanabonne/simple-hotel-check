@@ -16,3 +16,17 @@
   @include robotoMedium(24px);
   margin: 0;
 }
+
+.fav__hotels {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 290px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

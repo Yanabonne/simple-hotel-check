@@ -9,7 +9,7 @@ function FavHotels() {
   return (
     <section className="fav">
       <h2 className="fav__title">Избранное</h2>
-      <div className="list__hotels">
+      <div className="fav__hotels">
         {hotels.map((hotel) => {
           if (hotel.isLiked) {
             return (
