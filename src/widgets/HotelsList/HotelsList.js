@@ -1,17 +1,18 @@
 import React from "react";
 import arrow from "../../images/arrow.svg";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/scss";
+import HotelCard from "../../shared/HotelCard/HotelCard";
+import Scrollbar from "../../shared/Scrollbar/Scrollbar";
 import { ImagesContext } from "../../contexts/Images-swiper";
 import { selectBooking } from "../../store/CurrentBookingSlice";
-import HotelCard from "../../shared/HotelCard/HotelCard";
 import { selectHotels } from "../../store/HotelsSlice";
 import { useSelector } from "react-redux";
 
 function HotelsList() {
   const booking = useSelector(selectBooking);
-  const images = React.useContext(ImagesContext);
   const hotels = useSelector(selectHotels);
+  const listRef = React.useRef();
+
+  const images = React.useContext(ImagesContext);
 
   return (
     <section className="list">
@@ -24,34 +25,37 @@ function HotelsList() {
         <p className="list__date">{booking.date}</p>
       </div>
       <div className="list__slider">
-        <Swiper slidesPerView={3}>
-          <SwiperSlide>
-            {<img className="list__slide-image" src={images[0]} alt="Дом" />}
-          </SwiperSlide>
-          <SwiperSlide>
-            {<img className="list__slide-image" src={images[1]} alt="Лес" />}
-          </SwiperSlide>
-          <SwiperSlide>
-            {<img className="list__slide-image" src={images[2]} alt="Дорога" />}
-          </SwiperSlide>
-          <SwiperSlide>
-            {<img className="list__slide-image" src={images[0]} alt="Дом" />}
-          </SwiperSlide>
-          <SwiperSlide>
-            {<img className="list__slide-image" src={images[1]} alt="Лес" />}
-          </SwiperSlide>
-          <SwiperSlide>
-            {<img className="list__slide-image" src={images[2]} alt="Дорога" />}
-          </SwiperSlide>
-        </Swiper>
+        {images.map((image) => (
+          <img
+            className="list__slide-image"
+            src={image}
+            alt="Фотография леса"
+            key={image}
+          />
+        ))}
+        {images.map((image) => (
+          <img
+            className="list__slide-image"
+            src={image}
+            alt="Фотография леса"
+            key={image}
+          />
+        ))}
       </div>
       <p className="list__fav">
         Добавлено в изранное: <span>3</span> отеля.
       </p>
-      <div className="list__hotels">
-        {hotels.map((hotel) => (
-          <HotelCard cardInfo={hotel} showPicture={true} key={hotel.hotelId} />
-        ))}
+      <div className="list__container">
+        <div className="list__hotels" ref={listRef}>
+          {hotels.map((hotel) => (
+            <HotelCard
+              cardInfo={hotel}
+              showPicture={true}
+              key={hotel.hotelId}
+            />
+          ))}
+        </div>
+        <Scrollbar listRef={listRef} />
       </div>
     </section>
   );

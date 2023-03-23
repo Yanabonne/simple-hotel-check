@@ -14,7 +14,7 @@ export const getHotelsInfo = (city, date, days) => {
     `${BASE_URL}/cache.json?location=${city}&currency=rub&checkIn=${date}&checkOut=${addDays(
       date,
       days
-    )}`
+    )}&limit=7`
   )
     .then(getResponse)
     .then((res) => {

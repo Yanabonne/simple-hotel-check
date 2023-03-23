@@ -1,0 +1,23 @@
+.scroll {
+  display: block;
+  height: 100%;
+  position: relative;
+  width: 2px;
+}
+
+.scroll__track {
+  bottom: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: #e7e7e7;
+  border-radius: 2px;
+}
+
+.scroll__thumb {
+  position: absolute;
+  width: 100%;
+  background-color: $green;
+  border-radius: 2px;
+}

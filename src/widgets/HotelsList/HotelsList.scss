@@ -45,11 +45,22 @@
   width: 100%;
   overflow: hidden;
   margin: 28px 0;
+  height: 149px;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .list__slide-image {
   width: 164px;
   height: 149px;
+  margin: 0;
 }
 
 .list__fav {
@@ -62,9 +73,23 @@
   }
 }
 
-.list__hotels {
+.list__container {
   width: 100%;
   margin: 0;
   display: flex;
+  flex-direction: row;
+}
+
+.list__hotels {
+  width: calc(100% - 2px);
+  margin: 0;
+  display: flex;
   flex-direction: column;
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
