@@ -66,7 +66,7 @@ function HotelCard({ cardInfo, showPicture }) {
           <p className="card__price">
             Price:
             <span className="card__span-price">{`${Math.round(
-              cardInfo.priceAvg * booking.days
+              cardInfo.priceAvg
             )} ₽`}</span>
           </p>
         </div>

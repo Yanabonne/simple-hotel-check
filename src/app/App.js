@@ -15,17 +15,24 @@ function App() {
   function navigateToHotels() {
     setIsLoggedIn(true);
     navigate("hotels");
+    localStorage.setItem("isLoggedIn", true);
   }
 
   function navigateToAuth() {
     setIsLoggedIn(false);
     navigate("auth");
+    localStorage.setItem("isLoggedIn", false);
   }
 
   React.useEffect(() => {
     dispatch(
       getHotels({ city: booking.city, date: booking.date, days: booking.days })
     );
+    if (localStorage.getItem("isLoggedIn")) {
+      setIsLoggedIn(localStorage.getItem("isLoggedIn"));
+    } else {
+      localStorage.setItem("isLoggedIn", false);
+    }
   }, []);
 
   return (
