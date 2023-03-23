@@ -1,4 +1,4 @@
-const BASE_URL = "http://engine.hotellook.com/api/v2";
+const BASE_URL = "https://engine.hotellook.com/api/v2";
 
 const getResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
