@@ -6,11 +6,13 @@ import { ImagesContext } from "../../contexts/Images-swiper";
 import { selectBooking } from "../../store/CurrentBookingSlice";
 import { selectHotels } from "../../store/HotelsSlice";
 import { useSelector } from "react-redux";
+import { convertDate } from "../../shared/utils/utils";
 
 function HotelsList() {
   const booking = useSelector(selectBooking);
   const hotels = useSelector(selectHotels);
   const listRef = React.useRef();
+  const date = convertDate(booking.date);
 
   const images = React.useContext(ImagesContext);
 
@@ -22,7 +24,7 @@ function HotelsList() {
           <img className="list__arrow" src={arrow} alt="Стрелочка" />
           <p className="list__text">{booking.city}</p>
         </div>
-        <p className="list__date">{booking.date}</p>
+        <p className="list__date">{date}</p>
       </div>
       <div className="list__slider">
         {images.map((image) => (

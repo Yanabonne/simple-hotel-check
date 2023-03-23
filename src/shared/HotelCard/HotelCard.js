@@ -5,10 +5,13 @@ import { useSelector, useDispatch } from "react-redux";
 import starGold from "../../images/star-gold.svg";
 import starGrey from "../../images/star-grey.svg";
 import { updateLike } from "../../store/HotelsSlice";
+import { convertDate, transformDays } from "../utils/utils";
 
 function HotelCard({ cardInfo, showPicture }) {
   const booking = useSelector(selectBooking);
   const dispatch = useDispatch();
+  const date = convertDate(booking.date);
+  const days = transformDays(booking.days);
 
   function onButtonClick() {
     dispatch(updateLike(cardInfo));
@@ -31,7 +34,7 @@ function HotelCard({ cardInfo, showPicture }) {
             onClick={onButtonClick}
           ></button>
         </div>
-        <p className="card__date">{`${booking.date}    —  ${booking.days} день`}</p>
+        <p className="card__date">{`${date}    —  ${booking.days} ${days}`}</p>
         <div className="card__container">
           <div className="card__stars">
             <img
