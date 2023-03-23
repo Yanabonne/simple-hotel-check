@@ -8,20 +8,20 @@ import { selectBooking } from "../store/CurrentBookingSlice";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const navigate = useNavigate();
   const booking = useSelector(selectBooking);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   function navigateToHotels() {
     setIsLoggedIn(true);
     navigate("hotels");
-    localStorage.setItem("isLoggedIn", true);
+    // localStorage.setItem("isLoggedIn", true);
   }
 
   function navigateToAuth() {
     setIsLoggedIn(false);
     navigate("auth");
-    localStorage.setItem("isLoggedIn", false);
+    // localStorage.setItem("isLoggedIn", false);
   }
 
   React.useEffect(() => {
@@ -31,7 +31,7 @@ function App() {
     if (localStorage.getItem("isLoggedIn")) {
       setIsLoggedIn(localStorage.getItem("isLoggedIn"));
     } else {
-      localStorage.setItem("isLoggedIn", false);
+      localStorage.getItem("isLoggedIn", false);
     }
   }, []);
 

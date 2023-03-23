@@ -8,8 +8,9 @@ function Scrollbar({ listRef }) {
   const [scrollStartPosition, setScrollStartPosition] = React.useState(null);
   const [initialScrollTop, setInitialScrollTop] = React.useState(0);
   const [isDragging, setIsDragging] = React.useState(false);
+  const trackSize = 500;
 
-  function handleResize(ref, trackSize) {
+  function handleResize(ref) {
     const { clientHeight, scrollHeight } = ref;
     setThumbHeight(Math.max((clientHeight / scrollHeight) * trackSize, 20));
   }
@@ -17,9 +18,8 @@ function Scrollbar({ listRef }) {
   React.useEffect(() => {
     if (listRef.current && scrollTrackRef.current) {
       const ref = listRef.current;
-      const { clientHeight: trackSize } = scrollTrackRef.current;
       observer.current = new ResizeObserver(() => {
-        handleResize(ref, trackSize);
+        handleResize(ref);
       });
       observer.current.observe(ref);
       ref.addEventListener("scroll", handleThumbPosition);
