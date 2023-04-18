@@ -3,21 +3,22 @@ import React from "react";
 function AuthForm({ navigateToHotels }) {
   const emailRef = React.useRef();
   const [emailInput, setEmailInput] = React.useState("");
-  const [isEmailValid, setIsEmailValid] = React.useState(false);
+  const [isEmailValid, setIsEmailValid] = React.useState(true);
   const [emailInputError, setEmailInputError] = React.useState("");
 
   const passwordRef = React.useRef();
   const [passwordInput, setPasswordInput] = React.useState("");
-  const [isPasswordValid, setIsPasswordValid] = React.useState(false);
+  const [isPasswordValid, setIsPasswordValid] = React.useState(true);
   const [passwordInputError, setPasswordInputError] = React.useState("");
 
   const regexp = /^[A-Za-z0-9. -_?]+$/;
 
   function updateEmail(email) {
     setEmailInput(email);
+    validateEmail();
   }
 
-  function validateEmail() {
+  function validateEmail(email) {
     let isInputValid = true;
     let errorText = "";
 
@@ -28,10 +29,13 @@ function AuthForm({ navigateToHotels }) {
 
     setIsEmailValid(isInputValid);
     setEmailInputError(errorText);
+
+    return isInputValid;
   }
 
-  function updatePassword(e, pw) {
+  function updatePassword(pw) {
     setPasswordInput(pw);
+    validatePassword();
   }
 
   function validatePassword() {
@@ -48,22 +52,16 @@ function AuthForm({ navigateToHotels }) {
 
     setIsPasswordValid(isInputValid);
     setPasswordInputError(errorText);
+
+    return isInputValid;
   }
 
   function onSubmitForm(e) {
     e.preventDefault();
-    if (isPasswordValid & isEmailValid) {
+    if (validateEmail() & validatePassword()) {
       navigateToHotels();
     }
   }
-
-  React.useEffect(() => {
-    validateEmail();
-  }, [emailInput]);
-
-  React.useEffect(() => {
-    validatePassword();
-  }, [passwordInput]);
 
   return (
     <form className="form" onSubmit={onSubmitForm} noValidate>
@@ -77,7 +75,10 @@ function AuthForm({ navigateToHotels }) {
         required
         ref={emailRef}
         value={emailInput}
-        onChange={(e) => updateEmail(e.target.value)}
+        onChange={(e) => {
+          updateEmail(e.target.value);
+          console.log("haha");
+        }}
       />
       <span className="form__error">{emailInputError}</span>
       <h2 className={isPasswordValid ? "form__title" : "form__title form__red"}>
@@ -91,7 +92,7 @@ function AuthForm({ navigateToHotels }) {
         required
         ref={passwordRef}
         value={passwordInput}
-        onChange={(e) => updatePassword(e, e.target.value)}
+        onChange={(e) => updatePassword(e.target.value)}
       />
       <span className="form__error">{passwordInputError}</span>
       <button className="form__button" type="submit">
