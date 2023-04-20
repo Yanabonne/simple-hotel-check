@@ -18,7 +18,7 @@ function AuthForm({ navigateToHotels }) {
     validateEmail();
   }
 
-  function validateEmail(email) {
+  function validateEmail() {
     let isInputValid = true;
     let errorText = "";
 
@@ -35,17 +35,17 @@ function AuthForm({ navigateToHotels }) {
 
   function updatePassword(pw) {
     setPasswordInput(pw);
-    validatePassword();
+    validatePassword(pw);
   }
 
-  function validatePassword() {
+  function validatePassword(pw) {
     let isInputValid = true;
     let errorText = "";
 
     if (!passwordRef.current.validity.valid) {
       errorText = passwordRef.current.validationMessage;
       isInputValid = false;
-    } else if (!regexp.test(passwordInput)) {
+    } else if (!regexp.test(pw)) {
       errorText = "Используйте только латиницу и специальные символы в пароле.";
       isInputValid = false;
     }
